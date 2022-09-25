@@ -28,18 +28,82 @@ function App() {
         <h1 className="mb-40">All sneakers</h1>
         
 
-      <div className="card">
-        <img width={133} height={113} src="/img/sneakers/sneakers1.jpg" alt="sneakers" />
-        <h5>Male Sneakers <br />Nike Blazer Mid Suede</h5>
-        <div className="cardBottom d-flex justify-between align-center">
-          <div className="d-flex flex-column ">
-            <span>Price:</span>
-            <b>49.99$</b>
+      <div className="sneakers-cards d-flex">
+        <div className="card">
+          <img width={133} height={113} src="/img/sneakers/sneakers1.jpg" alt="sneakers" />
+          <h5>Male Sneakers <br />Nike Blazer Mid Suede</h5>
+          <div className="cardBottom d-flex justify-between align-center">
+            <div className="d-flex flex-column ">
+              <span>Price:</span>
+              <b>49.99$</b>
+            </div>
+            <button className="button">
+              <img src="/img/plus.svg" alt="add" width={11} height={11} />
+            </button>
           </div>
-          <button className="button">
-            <img src="/img/plus.svg" alt="add" width={11} height={11} />
-          </button>
         </div>
+
+
+        <div className="card">
+          <img width={133} height={113} src="/img/sneakers/sneakers2.jpg" alt="sneakers" />
+          <h5>Male Sneakers <br />Nike Air Max 270</h5>
+          <div className="cardBottom d-flex justify-between align-center">
+            <div className="d-flex flex-column ">
+              <span>Price:</span>
+              <b>49.99$</b>
+            </div>
+            <button className="button">
+              <img src="/img/plus.svg" alt="add" width={11} height={11} />
+            </button>
+          </div>
+        </div>
+
+
+        <div className="card">
+          <img width={133} height={113} src="/img/sneakers/sneakers3.jpg" alt="sneakers" />
+          <h5>Male Sneakers <br />Nike Blazer Mid Suede</h5>
+          <div className="cardBottom d-flex justify-between align-center">
+            <div className="d-flex flex-column ">
+              <span>Price:</span>
+              <b>39.99$</b>
+            </div>
+            <button className="button">
+              <img src="/img/plus.svg" alt="add" width={11} height={11} />
+            </button>
+          </div>
+        </div>
+
+        <div className="card">
+          <img width={133} height={113} src="/img/sneakers/sneakers4.jpg" alt="sneakers" />
+          <h5>Male Sneakers <br />Aka Boku Future Rider</h5>
+          <div className="cardBottom d-flex justify-between align-center">
+            <div className="d-flex flex-column ">
+              <span>Price:</span>
+              <b>39.99$</b>
+            </div>
+            <button className="button">
+              <img src="/img/plus.svg" alt="add" width={11} height={11} />
+            </button>
+          </div>
+        </div>
+
+        <div className="card">
+          <img width={133} height={113} src="/img/sneakers/sneakers5.jpg" alt="sneakers" />
+          <h5>Male Sneakers <br />Under Armour Curry 8</h5>
+          <div className="cardBottom d-flex justify-between align-center">
+            <div className="d-flex flex-column ">
+              <span>Price:</span>
+              <b>59.99$</b>
+            </div>
+            <button className="button">
+              <img src="/img/plus.svg" alt="add" width={11} height={11} />
+            </button>
+          </div>
+        </div>
+
+
+
+
       </div>
 
 
