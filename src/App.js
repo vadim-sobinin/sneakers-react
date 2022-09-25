@@ -26,7 +26,12 @@ function App() {
 
       <div className="content p-40">
         <h1>All sneakers</h1>
-        .....
+        
+
+      ....
+
+
+
       </div>
     </div>
   );
