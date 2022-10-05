@@ -2,6 +2,53 @@
 function App() {
   return (
     <div className="App clear">
+      <div className="overlay">
+        <div className="drawer">
+          <h2 className="mb-30">Cart</h2>
+
+          <div className="items">
+            <div className="cartItem d-flex align-center mb-20">
+              
+              <div style={{ backgroundImage: "url(/img/sneakers/sneakers1.jpg)" }} className="cartItemImg"></div>
+              <div className="mr-50">
+                <p className="mb-5">Male Sneakers<br></br>Nike Blazer Mid Suede</p>
+                <b>49.99$</b>
+              </div>
+              <img className="removeBtn" src="/img/btn-remove.svg" alt="remove button" />
+            </div>
+
+            <div className="cartItem d-flex align-center mb-20">
+              
+              <div style={{ backgroundImage: "url(/img/sneakers/sneakers1.jpg)" }} className="cartItemImg"></div>
+              <div className="mr-50">
+                <p className="mb-5">Male Sneakers<br></br>Nike Blazer Mid Suede</p>
+                <b>49.99$</b>
+              </div>
+              <img className="removeBtn" src="/img/btn-remove.svg" alt="remove button" />
+            </div>
+          
+          </div>
+
+          <div className="cartTotalBlock">
+            <ul>
+              <li>
+                <span>Total:</span>
+                <div></div>
+                <b>99.98$</b>
+              </li>
+              <li>
+                <span>Tax 5%:</span>
+                <div></div>
+                <b>4.99$</b>
+              </li>
+            </ul>
+            <button>Place an order</button>
+          </div>
+
+        </div>
+      </div>
+      
+      
       <header className="d-flex justify-between align-center p-40">
        <div className="d-flex align-center">
         <img src="/img/logo.png" alt="logo" width={40} height={40}/>
