@@ -1,29 +1,22 @@
-function Drawer(props) {
+function Drawer({onClose, items = []}) {
   return (
     <div className="overlay">
       <div className="drawer">
-        <h2 className="d-flex justify-between mb-30">Cart <img onClick = {props.onClose} className="removeBtn" src="/img/btn-remove.svg" alt="remove button" /></h2>
+        <h2 className="d-flex justify-between mb-30">Cart <img onClick = {onClose} className="removeBtn" src="/img/btn-remove.svg" alt="remove button" /></h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
+          
+          {items.map((obj) => (
+            <div className="cartItem d-flex align-center mb-20">
 
-            <div style={{ backgroundImage: "url(/img/sneakers/sneakers1.jpg)" }} className="cartItemImg"></div>
+            <div style={{ backgroundImage: `url(${obj.imageUrl})` }} className="cartItemImg"></div>
             <div className="mr-50">
-              <p className="mb-5">Male Sneakers<br></br>Nike Blazer Mid Suede</p>
-              <b>49.99$</b>
+              <p className="mb-5">{obj.name}</p>
+              <b>{obj.price}$</b>
             </div>
             <img className="removeBtn" src="/img/btn-remove.svg" alt="remove button" />
           </div>
-
-          <div className="cartItem d-flex align-center mb-20">
-
-            <div style={{ backgroundImage: "url(/img/sneakers/sneakers1.jpg)" }} className="cartItemImg"></div>
-            <div className="mr-50">
-              <p className="mb-5">Male Sneakers<br></br>Nike Blazer Mid Suede</p>
-              <b>49.99$</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="remove button" />
-          </div>
+          ))}
 
         </div>
 
