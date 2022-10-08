@@ -9,6 +9,7 @@ function App() {
 
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
+  const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
@@ -19,7 +20,11 @@ function App() {
 
   const onAddToCart = ((obj) => {
     setCartItems(prev => [...prev, obj]);}
-  )
+  );
+
+  const onChangeSearchInput = (event) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <div className="App clear">
@@ -30,17 +35,18 @@ function App() {
 
       <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40">
-          <h1>All sneakers</h1>
+          <h1>{searchValue ? `Search for "${searchValue}"` : "All sneakers"}</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input type="" placeholder="Search..." />
+            {searchValue && <img onClick={() => setSearchValue("")} className="clear removeBtn" src="/img/btn-remove.svg" alt="Clear" />}
+            <input onChange={onChangeSearchInput} value={searchValue} type="" placeholder="Search..." />
           </div>
         </div>
 
         <div className="sneakers-cards d-flex flex-wrap">
 
           {
-            items.map((item, index) => (
+            items.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase())).map((item, index) => (
               <Card
                 key={index}
                 name={item.name}
