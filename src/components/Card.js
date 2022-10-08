@@ -1,13 +1,11 @@
 import React from "react";
-function Card({imageUrl, name, price, onFavorite, onPlus}) {
-
+function Card({ imageUrl, name, price, onFavorite, onPlus }) {
   const [isAdded, setIsAdded] = React.useState(false);
 
   const onClickPlus = () => {
-    onPlus({name, price, imageUrl});
+    onPlus({ name, price, imageUrl });
     setIsAdded(!isAdded);
   };
-
 
   return (
     <div className="card">
@@ -21,12 +19,16 @@ function Card({imageUrl, name, price, onFavorite, onPlus}) {
           <span>Price:</span>
           <b>{price}$</b>
         </div>
-        
-          <img style={{cursor : "pointer"}} onClick={onClickPlus} src={isAdded ? "/img/btn-done.svg" : "/img/btn-plus.svg"} alt="add"  />
-        
+
+        <img
+          style={{ cursor: "pointer" }}
+          onClick={onClickPlus}
+          src={isAdded ? "/img/btn-done.svg" : "/img/btn-plus.svg"}
+          alt="add"
+        />
       </div>
     </div>
-  )
+  );
 }
 
 export default Card;

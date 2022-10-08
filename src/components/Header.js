@@ -10,7 +10,13 @@ function Header(props) {
       </div>
       <ul className="d-flex">
         <li onClick={props.onClickCart} className="mr-30 cu-p">
-          <img src="/img/cart.svg" className="mr-10" alt="cart" width={18} height={17} />
+          <img
+            src="/img/cart.svg"
+            className="mr-10"
+            alt="cart"
+            width={18}
+            height={17}
+          />
           <span>20$</span>
         </li>
         <li className="mr-30">
@@ -21,6 +27,6 @@ function Header(props) {
         </li>
       </ul>
     </header>
-  )
+  );
 }
 export default Header;
