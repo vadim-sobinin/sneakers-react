@@ -29,6 +29,14 @@ function App() {
       .then((res) => {
         setCartItems(res.data);
       });
+
+      axios
+      .get(
+        "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-favorites"
+      )
+      .then((res) => {
+        setFavorites(res.data);
+      });
   }, []);
 
   const onAddToCart = (obj) => {
@@ -49,12 +57,25 @@ function App() {
     setCartItems((prev) => prev.filter(item => item.id !== id));
   }
 
-  const onAddToFavorite = (obj) => {
-    axios
-      .post(
-        "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-favorites", obj
-      );
-    setFavorites((prev) => [...prev, obj]);
+  const onAddToFavorite = async (obj) => {
+    try {
+      if (favorites.find((favObj) => favObj.id === obj.id)){
+        axios
+        .delete(
+          `https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-favorites/${obj.id}`
+        );
+        // setFavorites((prev) => prev.filter(item => item.id !== obj.id));
+      } else{
+        const {data} = await axios
+        .post(
+          "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-favorites", obj
+        );
+        setFavorites((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert("Failed to update the favorites!");
+    }
+    
   };
 
   const onChangeSearchInput = (event) => {
