@@ -40,11 +40,26 @@ function App() {
   }, []);
 
   const onAddToCart = (obj) => {
-    setCartItems((prev) => [...prev, obj]);
-    axios
+    try {
+      if (cartItems.find((itemObj) => Number(itemObj.id) === Number(obj.id))){
+        axios
+      .delete(
+        `https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-cart/${obj.id}`
+      );
+        setCartItems(prev => prev.filter(itemObj => Number(itemObj.id) !==Number(obj.id)));
+      } else {
+        setCartItems((prev) => [...prev, obj]);
+      axios
       .post(
         "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-cart", obj
       );
+      }
+      
+
+
+    } catch (error) {
+      
+    }
   };
 
   const onRemoveFromCart = (id) => {
@@ -99,6 +114,7 @@ function App() {
       <Route path="/" exact>
          <Home
            items={items}
+           cartItems={cartItems}
            searchValue={searchValue}
            setSearchValue={setSearchValue}
            onChangeSearchInput={onChangeSearchInput}
