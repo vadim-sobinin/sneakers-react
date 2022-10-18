@@ -14,29 +14,27 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   React.useEffect(() => {
-    axios
-      .get(
-        "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-items"
-      )
-      .then((res) => {
-        setItems(res.data);
-      });
-      
-      axios
+    async function fetchData() {
+      const cartResponse = await axios
       .get(
         "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-cart"
-      )
-      .then((res) => {
-        setCartItems(res.data);
-      });
+      );
 
-      axios
+      const favoritesResponse = await axios
       .get(
         "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-favorites"
-      )
-      .then((res) => {
-        setFavorites(res.data);
-      });
+      );
+
+      const itemsResponse = await axios
+      .get(
+        "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-items"
+      );
+      
+      setCartItems(cartResponse.data);
+      setFavorites(favoritesResponse.data);
+      setItems(itemsResponse.data);
+    }
+    fetchData();
   }, []);
 
   const onAddToCart = (obj) => {
