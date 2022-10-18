@@ -6,12 +6,16 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Favorites from "./pages/Favorites";
 
+export const AppContext = React.createContext({});
+
+
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -30,6 +34,8 @@ function App() {
         "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-items"
       );
       
+      setIsLoading(false);
+
       setCartItems(cartResponse.data);
       setFavorites(favoritesResponse.data);
       setItems(itemsResponse.data);
@@ -95,8 +101,13 @@ function App() {
     setSearchValue(event.target.value);
   };
 
+  const isItemAdded = (id) => {
+    return cartItems.some((obj) => Number(obj.id) === Number(id));
+  };
+
   return (
-    <div className="App clear">
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded}}>
+      <div className="App clear">
       {cartOpened && (
         <Drawer
           items={cartItems}
@@ -118,14 +129,16 @@ function App() {
            onChangeSearchInput={onChangeSearchInput}
            onAddToFavorite={onAddToFavorite}
            onAddToCart={onAddToCart}
+           isLoading={isLoading}
          />
        </Route>
 
        <Route path="/favorites" exact>
-         <Favorites items={favorites} onAddToFavorite={onAddToFavorite} />
+         <Favorites onAddToFavorite={onAddToFavorite} />
        </Route>
       
     </div>
+    </AppContext.Provider>
   );
 }
 
