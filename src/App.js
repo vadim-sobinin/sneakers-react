@@ -6,12 +6,14 @@ import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Favorites from "./pages/Favorites";
 
+
 function App() {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -30,6 +32,8 @@ function App() {
         "https://632620f270c3fa390f94c420.mockapi.io/vadim-sobinin/sneakers-items"
       );
       
+      setIsLoading(false);
+
       setCartItems(cartResponse.data);
       setFavorites(favoritesResponse.data);
       setItems(itemsResponse.data);
@@ -118,6 +122,7 @@ function App() {
            onChangeSearchInput={onChangeSearchInput}
            onAddToFavorite={onAddToFavorite}
            onAddToCart={onAddToCart}
+           isLoading={isLoading}
          />
        </Route>
 
