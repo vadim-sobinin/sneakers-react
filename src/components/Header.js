@@ -30,7 +30,7 @@ function Header(props) {
             width={18}
             height={17}
           />
-          <span>{totalPrice}$</span>
+          <span>{totalPrice.toFixed(2)}$</span>
         </li>
         <li className="mr-30 cu-p">
           <Link to="/favorites">
@@ -38,7 +38,9 @@ function Header(props) {
           </Link>
         </li>
         <li>
-          <img src="/img/user.svg" alt="user-profile" width={20} height={20} />
+          <Link to="/orders">
+            <img src="/img/user.svg" alt="user-profile" width={20} height={20} />
+          </Link>
         </li>
       </ul>
     </header>
