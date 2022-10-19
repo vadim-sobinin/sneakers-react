@@ -33,7 +33,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
     }
     
     } catch (error) {
-      alert("Error in order creation :(");
+      // alert("Error in order creation :(");
     }
     setIsLoading(false);
   }
@@ -82,7 +82,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                 <li>
                   <span>Total:</span>
                   <div></div>
-                  <b>{totalPrice}$</b>
+                  <b>{totalPrice.toFixed(2)}$</b>
                 </li>
                 <li>
                   <span>Tax 5%:</span>

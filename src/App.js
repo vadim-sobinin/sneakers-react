@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import Favorites from "./pages/Favorites";
+import Orders from "./pages/Orders";
 
 export const AppContext = React.createContext({});
 
@@ -105,7 +106,7 @@ function App() {
   };
 
   return (
-    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems}}>
+    <AppContext.Provider value={{items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems, onAddToCart}}>
       <div className="App clear">
       {cartOpened && (
         <Drawer
@@ -134,6 +135,10 @@ function App() {
 
        <Route path="/favorites" exact>
          <Favorites />
+       </Route>
+
+       <Route path="/orders" exact>
+         <Orders />
        </Route>
       
     </div>
